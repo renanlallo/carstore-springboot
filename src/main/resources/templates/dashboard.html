@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+
+<h1>Car Dashboard</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Cor</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="car : ${cars}">
+        <td th:text="${car.name}"></td>
+        <td th:text="${car.color}"></td>
+        <td>
+            <form th:action="@{'/delete/' + ${car.id}}" method="post" style="display:inline;">
+                <button type="submit">Deletar</button>
+            </form>
+            <form th:action="@{'/edit/' + ${car.id}}" method="get" style="display:inline;">
+                <button type="submit">Editar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
